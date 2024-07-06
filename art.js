@@ -11,6 +11,37 @@ setDocDimensions(width, height);
 // store final lines here
 const finalLines = [];
 
+const t = new bt.Turtle();
+const rr = bt.randInRange;
+const sunSize = rr(15, 25);
+
+function drawAndFillMoon(t) {
+  const radius = rr(5, 10); // Random radius between 5 and 10
+  const x = rr(10, 115); 
+  const y = rr(80, 118); 
+  const steps = 100; 
+  const angleStep = (2 * Math.PI) / steps;
+
+  t.up();
+  t.goTo([x + radius, y]); 
+  t.down();
+
+  const moonPath = [];
+
+  for (let step = 0; step <= steps; step++) {
+    const pointX = x + radius * Math.cos(step * angleStep);
+    const pointY = y + radius * Math.sin(step * angleStep);
+    moonPath.push([pointX, pointY]);
+  }
+
+  drawLines([moonPath], { fill: 'white', stroke: 'black' });
+}
+
+// Draw and fill the moon
+
+
+
+
 const ground = [
   [
     [0, height],      // Bottom-left corner
@@ -87,7 +118,7 @@ bt.iteratePoints(mount3, (pt, t) => {
 // draw it
 drawLines(finalLines);
 
-
+drawAndFillMoon(t);
 
 drawLines(mount, { fill: "#0b0b0b", stroke: "#f5f5f4" });
 
