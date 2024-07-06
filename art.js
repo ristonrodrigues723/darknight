@@ -1,3 +1,8 @@
+// welcome to blot!
+
+// check out this guide to learn how to program in blot
+// https://blot.hackclub.com/editor?guide=start
+
 const width = 125;
 const height = 125;
 
@@ -5,6 +10,19 @@ setDocDimensions(width, height);
 
 // store final lines here
 const finalLines = [];
+
+const ground = [
+  [
+    [0, height],      // Bottom-left corner
+    [width, height],  // Bottom-right corner
+    [width, 3 * 0],   // Top-right corner 
+    [0, 3 * 0]        
+  ]
+];
+
+drawLines(ground, { fill: "#929497", stroke: "#29636A" });
+//grey back
+// orangefilll-drawLines(ground, { fill: "#FAA41B", stroke: "#29636A" });
 
 const randsize = bt.rand() * 2 + 5
 const base = 50
@@ -69,7 +87,9 @@ bt.iteratePoints(mount3, (pt, t) => {
 // draw it
 drawLines(finalLines);
 
-drawLines(mount, {  stroke: "#0b0b0b" });
 
-drawLines(mount3, { stroke: "#D13D32" });
-drawLines(mount2, { stroke: "#1d1b25" });
+
+drawLines(mount, { fill: "#0b0b0b", stroke: "#f5f5f4" });
+
+drawLines(mount3, { fill: "#1d1b25", stroke: "#f4f4f3" });
+drawLines(mount2, { fill: "#070e20", stroke: "#f5f5f4" });
