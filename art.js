@@ -15,6 +15,137 @@ const t = new bt.Turtle();
 const rr = bt.randInRange;
 const sunSize = rr(15, 25);
 
+
+
+
+// Define the points for the area to be filled
+const points = [
+  [0, 0],
+  [125, 0],
+  [125, 34],
+  [0, 75]
+];
+
+// Draw and fill the area
+drawLines([points], { fill: 'black', stroke: 'none' });
+
+// constants
+const waveY = 80;
+const sunRadius = 18;
+// turtle at center
+const turtle = new bt.Turtle()
+  .setAngle(0);
+
+
+
+turtle.jump([ sunRadius * 2.2 -20, height - 105 ]);
+for (let i = 0; i < 1; i++) {
+  let angle = 115;
+  turtle.up().setAngle(100).forward(17).setAngle(-angle / 2).down();
+  for (let i = 0; i < 2; i++) {
+    // 
+    for (let j = 0; j < 4; j++) {
+      //length
+      turtle.left(angle).arc(-angle, 4);
+    }
+    turtle.right(9);
+    for (let j = 0; j < 4; j++) {
+      // breadth
+      turtle.left(angle).arc(-angle, 4);
+    }
+    // turtle.setAngle(90 - angle / 2);
+  }
+  // turtle.setAngle(0).up().forward(27);
+}
+// draw it
+drawLines(turtle.lines(), {
+  fill: "black",
+  stroke: "lightgrey",
+  width: 7
+});
+
+
+
+// // clouds-2
+// turtle.jump([ sunRadius * 2.2 + 47, height - 100]);
+// for (let i = 0; i < 1; i++) {
+//   let angle = 115;
+//   turtle.up().setAngle(100).forward(14).setAngle(-angle / 2).down();
+//   for (let i = 0; i < 1; i++) {
+//     // 
+//     for (let j = 0; j < 2.3; j++) {
+//       //length
+//       turtle.left(angle).arc(-angle, 4);
+//     }
+//     turtle.right(9);
+//     for (let j = 0; j < 3; j++) {
+//       // breadth
+//       turtle.left(angle).arc(-angle, 4);
+//     }
+//     // turtle.setAngle(90 - angle / 2);
+//   }
+//   // turtle.setAngle(0).up().forward(27);
+// }
+// // draw it
+// drawLines(turtle.lines(), {
+//   fill: "black",
+//   stroke: "lightgrey",
+//   width: 7
+// });
+// clouds-1 triangle
+turtle.jump([ sunRadius * 2.2 -54, height - 50]);
+for (let i = 0; i < 1; i++) {
+  let angle = 115;
+  turtle.up().setAngle(0).forward(15).setAngle(-angle / 2).down();
+  for (let i = 0; i < 2; i++) {
+    for (let j = 0; j < 4; j++) {
+      turtle.left(angle).arc(-angle, 7);
+    }
+    turtle.right(90);
+    for (let j = 0; j < 4; j++) {
+      turtle.left(angle).arc(-angle, 4);
+    }
+    turtle.setAngle(18 - angle / 2);
+  }
+  turtle.setAngle(0).up().forward(27);
+}
+// draw it
+drawLines(turtle.lines(), {
+  fill: "black",
+  stroke: "grey",
+  width: 8
+});
+
+// clouds-2
+turtle.jump([ sunRadius * 2.2 + 47, height - 100]);
+for (let i = 0; i < 1; i++) {
+  let angle = 115;
+  turtle.up().setAngle(100).forward(14).setAngle(-angle / 2).down();
+  for (let i = 0; i < 1; i++) {
+    // 
+    for (let j = 0; j < 2.3; j++) {
+      //length
+      turtle.left(angle).arc(-angle, 4);
+    }
+    turtle.right(9);
+    for (let j = 0; j < 3; j++) {
+      // breadth
+      turtle.left(angle).arc(-angle, 4);
+    }
+    // turtle.setAngle(90 - angle / 2);
+  }
+  // turtle.setAngle(0).up().forward(27);
+}
+// draw it
+drawLines(turtle.lines(), {
+  fill: "black",
+  stroke: "lightgrey",
+  width: 7
+});
+
+
+
+
 function drawAndFillMoon(t) {
   const radius = rr(5, 10); // Random radius between 5 and 10
   const x = rr(10, 115); 
@@ -117,10 +248,19 @@ bt.iteratePoints(mount3, (pt, t) => {
 
 // draw it
 drawLines(finalLines);
+drawLines(turtle.lines(), {
+  fill: "black",
+  stroke: "lightgrey",
+  width: 7
+});
 
 drawAndFillMoon(t);
-
+drawLines([points], { fill: 'black', stroke: 'none' });
 drawLines(mount, { fill: "#0b0b0b", stroke: "#f5f5f4" });
+
+
 
 drawLines(mount3, { fill: "#1d1b25", stroke: "#f4f4f3" });
 drawLines(mount2, { fill: "#070e20", stroke: "#f5f5f4" });
+ 
+
