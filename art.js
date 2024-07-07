@@ -146,29 +146,29 @@ drawLines(turtle.lines(), {
 
 
 
-function drawAndFillMoon(t) {
-  const radius = rr(5, 10); // Random radius between 5 and 10
-  const x = rr(10, 115); 
-  const y = rr(80, 118); 
-  const steps = 100; 
-  const angleStep = (2 * Math.PI) / steps;
+// function drawAndFillMoon(t) {
+//   const radius = rr(5, 10); // Random radius between 5 and 10
+//   const x = rr(10, 115); 
+//   const y = rr(80, 118); 
+//   const steps = 100; 
+//   const angleStep = (2 * Math.PI) / steps;
 
-  t.up();
-  t.goTo([x + radius, y]); 
-  t.down();
+//   t.up();
+//   t.goTo([x + radius, y]); 
+//   t.down();
 
-  const moonPath = [];
+//   const moonPath = [];
 
-  for (let step = 0; step <= steps; step++) {
-    const pointX = x + radius * Math.cos(step * angleStep);
-    const pointY = y + radius * Math.sin(step * angleStep);
-    moonPath.push([pointX, pointY]);
-  }
+//   for (let step = 0; step <= steps; step++) {
+//     const pointX = x + radius * Math.cos(step * angleStep);
+//     const pointY = y + radius * Math.sin(step * angleStep);
+//     moonPath.push([pointX, pointY]);
+//   }
 
-  drawLines([moonPath], { fill: 'white', stroke: 'black' });
-}
+//   drawLines([moonPath], { fill: 'white', stroke: 'black' });
+// }
 
-// Draw and fill the moon
+// // Draw and fill the moon
 
 
 
@@ -182,7 +182,7 @@ const ground = [
   ]
 ];
 
-drawLines(ground, { fill: "#929497", stroke: "#29636A" });
+drawLines(ground, { fill: "#242424", stroke: "#29636A" });
 //grey back
 // orangefilll-drawLines(ground, { fill: "#FAA41B", stroke: "#29636A" });
 
@@ -246,6 +246,61 @@ bt.iteratePoints(mount3, (pt, t) => {
 })
 
 
+// // draw it
+// drawLines(finalLines);
+// drawLines(turtle.lines(), {
+//   fill: "black",
+//   stroke: "lightgrey",
+//   width: 7
+// });
+
+
+ 
+const moon = rr(15, 25);
+
+function drawMoonWithRings(t) {
+  const moonRadius = rr(5, 10); // Random radius between 5 and 10
+  const x = rr(40, 95); 
+  const y = 80; // Fixed y position
+  const steps = 100; 
+  const angleStep = (2 * Math.PI) / steps;
+
+  // Function to draw a circle
+  function drawCircle(radius, fill) {
+    const circlePath = [];
+    for (let step = 0; step <= steps; step++) {
+      const pointX = x + radius * Math.cos(step * angleStep);
+      const pointY = y + radius * Math.sin(step * angleStep);
+      circlePath.push([pointX, pointY]);
+    }
+    drawLines([circlePath], { fill: fill, stroke: fill });
+  }
+// drawLines([points], { fill: 'black', stroke: 'black' });
+// drawLines(mount, { fill: "#0b0b0b", stroke: "#f5f5f4" });
+// drawLines(mount3, { fill: "#1d1b25", stroke: "#f4f4f3" });
+// drawLines(mount2, { fill: "#070e20", stroke: "#f5f5f4" });
+  
+  // Draw outer black ring
+  drawCircle(moonRadius + 25, '#494949');
+
+  // Draw middle white ring
+  drawCircle(moonRadius + 10, '#545454');
+
+  // Draw inner grey ring
+  drawCircle(moonRadius + 5, '#8d8d8d');
+
+  // Draw the moon
+  drawCircle(moonRadius, 'white');
+}
+
+// Draw moon with rings
+drawMoonWithRings(t);
+
+const kites = new bt.Turtle();
+bt.join(finalLines, t.lines());
+drawLines(finalLines);
+
+
 // draw it
 drawLines(finalLines);
 drawLines(turtle.lines(), {
@@ -254,13 +309,13 @@ drawLines(turtle.lines(), {
   width: 7
 });
 
-drawAndFillMoon(t);
-drawLines([points], { fill: 'black', stroke: 'none' });
-drawLines(mount, { fill: "#0b0b0b", stroke: "#f5f5f4" });
+// drawAndFillMoon(t);
+drawLines([points], { fill: 'black', stroke: 'black' });
+drawLines(mount, { fill: "#0b0b0b", stroke: "#f5f5f4" , width: 7});
 
 
 
-drawLines(mount3, { fill: "#1d1b25", stroke: "#f4f4f3" });
-drawLines(mount2, { fill: "#070e20", stroke: "#f5f5f4" });
+drawLines(mount3, { fill: "#1d1b25", stroke: "#f4f4f3" , width: 7 });
+drawLines(mount2, { fill: "#070e20", stroke: "#f5f5f4" , width: 7});
  
 
