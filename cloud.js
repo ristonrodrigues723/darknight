@@ -1,39 +1,65 @@
-// Set the document dimensions
+/*
+@title: Ocean
+@author: dkim19375
+@snapshot: snapshot0.png
+*/
 const width = 125;
 const height = 125;
 setDocDimensions(width, height);
+// constants
+const waveY = 80;
+const sunRadius = 18;
+// turtle at center
+const turtle = new bt.Turtle()
+  .setAngle(0);
 
-// Create a new Turtle instance
-const t = new bt.Turtle();
-
-// Function to draw and fill a mountain-like shape
-function drawAndFillMountain(t, xoff, yoff, scale, fill) {
-  const mountainPoints = [
-    [xoff, yoff],
-    [xoff + 20 * scale, yoff - 10 * scale],
-    [xoff + 40 * scale, yoff],
-    [xoff + 60 * scale, yoff + 5 * scale],
-    [xoff + 70 * scale, yoff + 15 * scale],
-    [width, yoff]
-    // Add more points here to create the mountain shape
-    // Adjust the coordinates and randomness as needed
-  ];
-
-  // Create a mountain path using the points
-  const mountainPath = bt.catmullRom(mountainPoints, 100);
-
-  // Draw and fill the mountain
-  drawLines([mountainPath], { fill, stroke: 'black' });
+// clouds-1 triangle
+turtle.jump([ sunRadius * 2.2 -54, height - 50 ]);
+for (let i = 0; i < 1; i++) {
+  let angle = 115;
+  turtle.up().setAngle(0).forward(15).setAngle(-angle / 2).down();
+  for (let i = 0; i < 2; i++) {
+    for (let j = 0; j < 4; j++) {
+      turtle.left(angle).arc(-angle, 7);
+    }
+    turtle.right(90);
+    for (let j = 0; j < 4; j++) {
+      turtle.left(angle).arc(-angle, 4);
+    }
+    turtle.setAngle(18 - angle / 2);
+  }
+  turtle.setAngle(0).up().forward(27);
 }
+// draw it
+drawLines(turtle.lines(), {
+  fill: "black",
+  stroke: "grey",
+  width: 8
+});
 
-// Define the offset and scale for the mountains
-const mountainScale = 2; // Adjust the scale as needed
-
-// Draw and fill multiple mountains
-drawAndFillMountain(t, 10, 80, mountainScale, '#0b0b0b'); // m1
-drawAndFillMountain(t, 40, 70, mountainScale, '#070e20'); // m2
-drawAndFillMountain(t, 80, 60, mountainScale, '#1d1b25'); // m3
-// Add more mountains here with different coordinates and shades
-
-// Draw and fill the moon (you can keep this part)
-drawAndFillMoon(t);
+// clouds-2
+turtle.jump([ sunRadius * 2.2 + 47, height - 100]);
+for (let i = 0; i < 1; i++) {
+  let angle = 115;
+  turtle.up().setAngle(100).forward(14).setAngle(-angle / 2).down();
+  for (let i = 0; i < 1; i++) {
+    // 
+    for (let j = 0; j < 2.3; j++) {
+      //length
+      turtle.left(angle).arc(-angle, 4);
+    }
+    turtle.right(9);
+    for (let j = 0; j < 3; j++) {
+      // breadth
+      turtle.left(angle).arc(-angle, 4);
+    }
+    // turtle.setAngle(90 - angle / 2);
+  }
+  // turtle.setAngle(0).up().forward(27);
+}
+// draw it
+drawLines(turtle.lines(), {
+  fill: "black",
+  stroke: "lightgrey",
+  width: 7
+});
